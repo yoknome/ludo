@@ -29,10 +29,7 @@ public class ApplicationMain implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        // Hier gehts los...
-
         setupService.setup();
-
-        // Irgendwas...
     }
+
 }

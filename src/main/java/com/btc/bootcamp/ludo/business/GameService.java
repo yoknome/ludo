@@ -42,7 +42,7 @@ public class GameService {
 					continue;
 				}
 				playerTurn(board, playerEntry.getKey());
-//				promptingService.pressEnterToContinue();
+				promptingService.pressEnterToContinue();
 			}
 		} while (!won);
 	}
@@ -97,18 +97,23 @@ public class GameService {
 	}
 
 	Integer determineNewPiecePosition(Integer oldPosition, int diceResult, int startTile) {
+		return determineNewPiecePosition(oldPosition, diceResult, startTile, configService.getFieldsPerRound());
+	}
+
+	Integer determineNewPiecePosition(Integer oldPosition, int diceResult, int startTile, int fieldsPerRound) {
 		if (oldPosition == 0) {
 			return startTile;
 		} else if (oldPosition < 0) {
 			return oldPosition - diceResult;
 		}
 		int newPosition = oldPosition + diceResult;
-		if (startTile == 1 && newPosition > configService.getFieldsPerRound()) {
-			newPosition %= configService.getFieldsPerRound();
-			return 0 - newPosition;
+		if (newPosition > fieldsPerRound) {
+			newPosition = newPosition % fieldsPerRound;
+		}
+		if (startTile == 1 && newPosition < oldPosition) {
+			return -newPosition;
 		} else if (oldPosition < startTile && newPosition >= startTile) {
-			return 0 - (startTile - newPosition);
-//			return oldPosition - newPosition;
+			return startTile - newPosition - 1;
 		} else {
 			return newPosition;
 		}

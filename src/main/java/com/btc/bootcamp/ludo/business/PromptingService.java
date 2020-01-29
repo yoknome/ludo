@@ -43,7 +43,7 @@ public class PromptingService {
 			possibleValues.add(possiblePiece.getId());
 		}
 		int input = textIO.newIntInputReader()
-				.withPossibleValues(possibleValues)
+				.withInlinePossibleValues(possibleValues)
 				.read("Select the Piece you want to move");
 		return map.get(input);
 	}

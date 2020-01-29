@@ -43,6 +43,15 @@
             <artifactId>text-io</artifactId>
             <version>3.3.0</version>
         </dependency>
+
+        <!-- for testing -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <version>2.2.2.RELEASE</version>
+        </dependency>
+
     </dependencies>
 
 </project>

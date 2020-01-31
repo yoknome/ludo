@@ -1,15 +1,22 @@
 package com.btc.bootcamp.ludo.business;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@ExtendWith(MockitoExtension.class)
 class GameServiceTest {
-    private static final int FIELDS_PER_ROUND = 40;
+
+    private final int FIELDS_PER_ROUND = 4;
 
     @InjectMocks
-    GameService gameService = new GameService();
+    ConfigurationService configService;
+
+    @InjectMocks
+    GameService gameService;
 
     @Test
     void determineNewPiecePositionMoveHomeToStartTile() {
